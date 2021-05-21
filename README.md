@@ -37,6 +37,7 @@ Nav <br />
 Request|Route|Desc
 -----|----|--
 GET|/movies|Returns all movies
+POST|/movies/create| Create new movie
 GET|/movies/:id/reviews| returns all reviews for movie
 GET|/movies/:id| Returns movie with id
 GET|/movies/tag/:id| Returns all movie with tag
@@ -44,7 +45,7 @@ PUT|/movies/:id| Update movie Info
 POST|/users/signup| Create user
 POST|/users/login| User login
 POST|/tag| Add tag
-POST|/tag/movies/:id | add tag to movie
+POST|/tag/movies/:id | Sdd tag to movie
 PUT|/users/:id|Update user info
 DELETE|/movies/:id|Delete movie
 
