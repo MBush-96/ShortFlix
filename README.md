@@ -47,6 +47,8 @@ POST|/users/login| User login
 POST|/tag| Add tag
 POST|/tag/movies/:id | Sdd tag to movie
 PUT|/users/:id|Update user info
+GET|/rating/:id| | Get rating
+GET|/rating/movies/:id| Get all ratings of movie
 DELETE|/movies/:id|Delete movie
 
 # MVP
