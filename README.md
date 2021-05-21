@@ -30,7 +30,7 @@ Nav <br />
 
 # ERD
 
-<img src='https://i.imgur.com/4XFqISn.png' width='900px' height='400px' />
+<img src='https://i.imgur.com/ZIkPcwc.png' width='900px' height='400px' />
 
 # Routes
 
