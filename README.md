@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# ShortFlix
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A website for short movies.
 
-## Available Scripts
+# User Stories
 
-In the project directory, you can run:
+1. User can signup with a email and password. After signup they are shown the login page.
+2. User can login with the correct email and password, and redirected to the homepage. 
+3. If user uses incorrect email or password they are given visual feedback.
+4. Home page will display all short movies, as well as a nav bar for logout and profile.
+5. If the user hovers over a specific movie they get the title description, and rating for that movie. They can also rate the movie.
+7. If the user clicks on a movie they are redirected to that movies url, with reviews below the movie. The movie plays once the url is loaded.
+8. If the user is not logged in they cannot leave a review or rate a movie.
+9. User can submit a video for review to be added to the site.
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Wireframes
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Homepage<br/>
+<img src='https://i.imgur.com/fnp4146.png' width='400px' height='500px' />
 
-### `yarn test`
+Movie hovered over<br />
+<img src='https://i.imgur.com/nbiPJm1.png' width='400px' height=400px />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Movie page <br/>
+<img src='https://i.imgur.com/iKPTW9R.png' width='400px' height='500px' />
 
-### `yarn build`
+Nav <br />
+<img src='https://i.imgur.com/6JGIyae.png' width='600px' height='300px' />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# ERD
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<img src='https://i.imgur.com/4XFqISn.png' width='900px' height='400px' />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Routes
 
-### `yarn eject`
+Request|Route|Desc
+-----|----|--
+GET|/movies|Returns all movies
+GET|/movies/:id/reviews| returns all reviews for movie
+GET|/movies/:id| Returns movie with id
+GET|/movies/tag/:id| Returns all movie with tag
+PUT|/movies/:id| Update movie Info
+POST|/users/signup| Create user
+POST|/users/login| User login
+POST|/tag| Add tag
+POST|/tag/movies/:id | add tag to movie
+PUT|/users/:id|Update user info
+DELETE|/movies/:id|Delete movie
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# MVP
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* User login/create account
+* User can leave review and it is displayed and changes the movie rating
+* Movie is played when clicked and is the correct movie
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# Stretch
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* UI work
+* Friends List to share videos
+* Friends highly reviewed video feed ?
