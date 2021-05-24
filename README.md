@@ -30,13 +30,14 @@ Nav <br />
 
 # ERD
 
-<img src='https://i.imgur.com/4XFqISn.png' width='900px' height='400px' />
+<img src='https://i.imgur.com/ZIkPcwc.png' width='900px' height='400px' />
 
 # Routes
 
 Request|Route|Desc
 -----|----|--
 GET|/movies|Returns all movies
+POST|/movies/create| Create new movie
 GET|/movies/:id/reviews| returns all reviews for movie
 GET|/movies/:id| Returns movie with id
 GET|/movies/tag/:id| Returns all movie with tag
@@ -44,8 +45,10 @@ PUT|/movies/:id| Update movie Info
 POST|/users/signup| Create user
 POST|/users/login| User login
 POST|/tag| Add tag
-POST|/tag/movies/:id | add tag to movie
+POST|/tag/movies/:id | Sdd tag to movie
 PUT|/users/:id|Update user info
+GET|/rating/:id|Get rating
+GET|/rating/movies/:id| Get all ratings of movie
 DELETE|/movies/:id|Delete movie
 
 # MVP
