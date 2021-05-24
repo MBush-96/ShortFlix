@@ -1,38 +1,167 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
+.app {
+  font-family: 'Mate SC', serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.homeheader {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  background-image: url('https://i.imgur.com/kyiYyF3.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.middlecontdesc {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  font-size: 150%;
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+.homenav {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 100px;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.getstartedform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+}
+
+.title {
+  color: red;
+  font-weight: 900;
+}
+
+.title:hover {
+  cursor: pointer;
+}
+
+.t {
+  text-decoration: none;
+}
+
+.signuphp {
+  margin: 70px 0;
+  font-size: xxx-large;
+}
+
+.siteperkscont {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+  justify-content: center;
+  align-items: center;
+}
+
+.spacer {
+  width: 50%;
+}
+
+.perkone, .perkthree, .perkfive {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.perkonecontent, .perkfivecontent, .perkthreecontent {
+  border-left: 5px solid white;
+  color: white;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+}
+
+.p1p, .p3p, .p5p {
+  margin-left: 10%;
+  font-size: xx-large;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 30px;
+}
+
+
+.perktwo, .perkfour {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.perktwocontent, .perkfourcontent {
+  border-right: 5px solid white;
+  color: white;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.p2p, .p4p {
+  width: 30%;
+  font-size: xx-large;
+  display: flex;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+}
+
+.overlord {
+  margin: 0px;
+  width: 350px;
+  height: 200px;
+  border-radius: 10%;
+  margin-right: 5%;
+}
+
+.free {
+  margin: 0px;
+  width: 200px;
+  height: 200px;
+  margin-left: 30%;
+}
+
+.signuptitle {
+  color: white;
+  text-align: center;
+}
+
+.signupcontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signupform {
+  display: flex;
+  flex-direction: column;
+}
+
+.logincontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginform {
+  display: flex;
+  flex-direction: column;
+}
+
+.logintitle {
+  color: white;
+  text-align: center;
 }
