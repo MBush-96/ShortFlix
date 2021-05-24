@@ -1,17 +1,19 @@
 import TextField from '@material-ui/core/TextField'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import Snackbar from '@material-ui/core/Snackbar'
 import MuiAlert from '@material-ui/lab/Alert'
+import { UserContext } from '../context/usercontext'
 
 const Login = props => {
     const history = useHistory()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState(false)
+    const { fetchUser } = useContext(UserContext)
 
     const Alert = (props) => {
         return <MuiAlert elevation={6} variant='filled' {...props} />
@@ -36,8 +38,9 @@ const Login = props => {
             setEmail('')
             setPassword('')
         } else if(res.data.user) {
+            localStorage.setItem('userId', res.data.token)
             history.push('/films')
-            console.log(res ,'h');
+            await fetchUser()
         }
     }
 
@@ -87,7 +90,20 @@ const Login = props => {
                         maxWidth: '100%',
                         backgroundColor: 'red'
                     }}
-                >SUBMIT</Button>
+                    >SUBMIT</Button>
+                <Box m={1.5} />
+                <Button
+                    variant='contained'
+                    color='secondary'
+                    style={{
+                        height: '140%',
+                        width: '100%',
+                        backgroundColor: 'red'
+                    }}
+                    onClick={() => (
+                        history.push('/signup')
+                    )}
+                >New User</Button>
             </form>
         </div>
     )

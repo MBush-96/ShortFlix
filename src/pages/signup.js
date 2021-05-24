@@ -92,6 +92,7 @@ const Signup = props => {
                 />
                 <Box m={1.5} />
                 <TextField
+                    type='password'
                     id='passwordverify'
                     label='Password Again'
                     required

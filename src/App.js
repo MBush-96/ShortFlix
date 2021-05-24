@@ -5,11 +5,27 @@ import Home from './pages/home'
 import Login from './pages/login'
 import Signup from './pages/signup'
 import Nav from './components/nav'
-import { Route } from 'react-router-dom'
-import { useState } from 'react'
+import AddFilm from './pages/addfilm'
+import Films from './pages/films'
+import PlayFilm from './pages/playfilm'
+import { Redirect, Route } from 'react-router-dom'
+import { useEffect, useState, useContext } from 'react'
+import axios from 'axios';
+import { UserContext } from './context/usercontext'
 
 function App() {
   const [userEmail, setUserEmail] = useState('')
+  const [movies, setMovies] = useState([])
+  const { userState } = useContext(UserContext)
+  const [user, setUser] = userState
+
+  const fetchAllMovies = () => {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/movies`).then(res => {
+      setMovies(res.data.Movies)
+    })
+  }
+
+  useEffect(fetchAllMovies, [])
 
   return (
     <div className="App">
@@ -18,9 +34,12 @@ function App() {
       <Route
         exact
         path='/'
-        render={() => (
-          <Home setUserEmail={setUserEmail} />
-        )}
+        render={() => {
+          if(localStorage.getItem('userId')) {
+            return <Redirect to='/films' />
+          }
+          return <Home setUserEmail={setUserEmail} />
+        }}
       />
 
       <Route
@@ -37,6 +56,39 @@ function App() {
         render={() => (
           <Signup userEmail={userEmail} />
         )}
+      />
+
+      <Route
+        exact
+        path='/newfilm'
+        render={() => {
+          if(localStorage.getItem('userId')) {
+            return <AddFilm />
+          }
+          return <Redirect to='/login' />
+        }}
+      />
+
+      <Route
+        exact
+        path='/films'
+        render={() => {
+          if(localStorage.getItem('userId')) {
+            return <Films />
+          }
+          return <Redirect to='/login' />
+        }}
+      />
+
+      <Route
+        exact
+        path='/movie/:id'
+        render={rProps => {
+          if(localStorage.getItem('userId')) {
+            return <PlayFilm rProps={rProps.match.params.id} />
+          }
+          return <Redirect to='/login' />
+        }}
       />
     </div>
   );

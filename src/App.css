@@ -42,6 +42,7 @@
 .title {
   color: red;
   font-weight: 900;
+  text-decoration: none;
 }
 
 .title:hover {
@@ -50,6 +51,16 @@
 
 .t {
   text-decoration: none;
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+
 }
 
 .signuphp {
@@ -164,4 +175,105 @@
 .logintitle {
   color: white;
   text-align: center;
+}
+
+.newmovieformcontainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.newmovieform {
+  display: flex;
+  flex-direction: column;
+}
+
+.addfilmtitle {
+  color: white;
+}
+
+.filmscontainer {
+  display: flex;
+  padding: 30px 100px;
+  flex-wrap: wrap;
+}
+
+.films {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  padding-top: 0;
+  flex-wrap: wrap;
+}
+
+.moviecover {
+  width: 300px;
+  height: 180px;
+  margin-bottom: 0;
+  border-radius: 10%;
+  margin-top: 0%;
+}
+
+.movietitle {
+  color: white;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.moviedesc {
+  color: white;
+  text-align: center;
+}
+
+.movie:hover {
+  cursor: pointer;
+}
+
+.movierating {
+  color: white;
+  margin: 0;
+  text-decoration: none;
+}
+
+.movie {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 18%;
+  align-items: center;
+  text-decoration: none;
+  text-align: center;
+  margin-bottom: 75px;
+}
+
+.movieframe {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.moviepagetitle {
+  color: white;
+}
+
+.reviews {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10%;
+}
+
+.reviewform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
 }
