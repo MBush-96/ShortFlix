@@ -23,14 +23,12 @@ const PlayFilm = props => {
                     title="YouTube video player" 
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowFullscreen='True'>
+                    allowFullScreen='True'>
                 </iframe>
             <div className='movieinfo'>
                 <h2 className='moviepagetitle'>{movie.title}</h2>
+                <Review />
             </div>
-            </div>
-            <div className='reviews'>
-                <Review movie={props.rProps} />
             </div>
         </div>
     )
