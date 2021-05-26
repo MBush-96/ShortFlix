@@ -346,4 +346,44 @@ a {
   [class*="homenav"] {
     padding-left: 50px;
   }
+
+  [class*=middlecontentdesc] {
+    padding: 0 20px;
+  }
+
+  [class*=getstartedform] {
+    padding: 0 20px;
+  }
+
+  [class*=p1p] {
+    font-size: large;
+  }
+
+  [class*=p2p] {
+    font-size: large;
+  }
+
+  [class*=p3p] {
+    font-size: large;
+  }
+
+  [class*=p4p] {
+    font-size: large;
+  }
+
+  [class*=p5p] {
+    font-size: large;
+  }
+
+  [class*=free] {
+    margin-top: 10%;
+    width: 100px;
+    height: 100px;
+  }
+
+  [class*=overlord] {
+    width: 100px;
+    height: 100px;
+    margin-top: 10%;
+  }
 }
