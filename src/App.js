@@ -7,6 +7,7 @@ import Nav from './components/nav'
 import AddFilm from './pages/addfilm'
 import Films from './pages/films'
 import PlayFilm from './pages/playfilm'
+import Profile from './pages/profile'
 import { Redirect, Route } from 'react-router-dom'
 import { useState } from 'react'
 
@@ -75,6 +76,14 @@ function App() {
           }
           return <Redirect to='/login' />
         }}
+      />
+
+      <Route
+        exact
+        path='/profile'
+        render={() => (
+          <Profile />
+        )}
       />
     </div>
   );

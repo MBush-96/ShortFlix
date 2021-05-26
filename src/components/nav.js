@@ -40,7 +40,7 @@ const Nav = props => {
                 open={Boolean(anchorEle)}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem><Link to='/profile' ><p className='undecorate'>Profile</p></Link></MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
             {localStorage.getItem('userId') ? 

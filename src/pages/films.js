@@ -30,10 +30,10 @@ const Films = props => {
         <div className='filmscontainer'>
             <div className='films'>
                 {movies.map((movie, i) => {
-                    let movie_tag = ''
+                    let movie_tag = []
                     tags.forEach(tag => {
                         if(tag.movie_id === movie.id) {
-                            movie_tag = tag.genre
+                            movie_tag.push(tag.genre)
                         }
                     })
                     return(
@@ -41,7 +41,11 @@ const Films = props => {
                             <Link to={`/movie/${movie.id}`}>
                                 <img className='moviecover' src={movie.movie_cover} alt='movie Cover'/>
                                 <h2 className='movietitle'>{movie.title}</h2>
-                                <p className='tag'>{movie_tag}</p>
+                                <div className='tagcontainer'>
+                                {movie_tag.map((tag, i) => (
+                                        <p className='tag' key={i}>{tag}</p>
+                                        ))}
+                                </div>
                                 <p className='moviedesc'>{movie.description}</p>
                                 <p className='movierating'><RatingStars movie_id={movie.id} /></p>
                             </Link>

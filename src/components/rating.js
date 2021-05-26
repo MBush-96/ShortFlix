@@ -25,8 +25,7 @@ const RatingStars = props => {
             {ratingValue === 0 ?
                 <></>
             :
-                <Box component="fieldset" mb={3} borderColor='transparent'>
-                    <Typography component='legend'><strong>Rating</strong></Typography>
+                <Box component="span" mb={3} borderColor='transparent'>
                     <Rating name='read-only' value={ratingValue} readOnly />
                 </Box>
             }
