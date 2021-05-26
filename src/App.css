@@ -386,4 +386,8 @@ a {
     height: 100px;
     margin-top: 10%;
   }
+
+  [class*=homeheader] {
+    background-image: none;
+  }
 }
