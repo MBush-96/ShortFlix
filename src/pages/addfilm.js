@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { TextField, Button, Box } from '@material-ui/core'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
+import { TextField, Button, Box, FormControl, Select, InputLabel } from '@material-ui/core'
 
 const AddFilm = props => {
     const history = useHistory()
@@ -9,6 +9,7 @@ const AddFilm = props => {
     const [movieDesc, setMovieDesc] = useState('')
     const [movieCover, setMovieCover] = useState('')
     const [movieSrc, setMovieSrc] = useState('')
+    const [genre, setGenre] = useState('')
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -19,12 +20,21 @@ const AddFilm = props => {
             movie_cover: movieCover,
             rating: 0
         })
+
+        const resTag = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/tag`, {
+            genre: genre,
+            movie_id: res.data.Created_Movie.id
+        })
+
+        console.log(resTag);
+
         console.log(res);
         history.push('/films')
         setMovieTitle('')
         setMovieDesc('')
         setMovieCover('')
         setMovieSrc('')
+        setGenre('')
     }
 
     return(
@@ -88,6 +98,35 @@ const AddFilm = props => {
                     }}
                     onChange={e => setMovieCover(e.target.value)}
                 />
+
+                <Box m={1.5} />
+                
+                <FormControl variant='filled'>
+                    <InputLabel htmlfor='genres'>Genre</InputLabel>
+                    <Select
+                        native
+                        value={genre}
+                        onChange={e => setGenre(e.target.value)}
+                        inputProps={{
+                            genre: 'Genre',
+                            id: 'genres'
+                        }}
+                        style={{
+                            background: 'white',
+                        }}
+                        required
+                    >
+                        <option aria-label="None" value="" />
+                        <option value={'Thriller'}>Thriller</option>
+                        <option value={'Comedy'}>Comedy</option>
+                        <option value={'Drama'}>Drama</option>
+                        <option value={'Horror'}>Horror</option>
+                        <option value={'Adventure'}>Adventure</option>
+                        <option value={'Sci-Fi'}>Sci-Fi</option>
+                        <option value={'Action'}>Action</option>
+                        <option value={'Romance'}>Romance</option>
+                    </Select>
+                </FormControl>
 
                 <Box m={1.5} />
 

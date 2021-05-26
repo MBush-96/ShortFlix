@@ -53,7 +53,7 @@ const Home = props => {
                     <div className='perkonecontent'>
                         <p className='p1p'>Watch high quality short movies and fan films.
                         </p>
-                        <img className='overlord' src='https://i.imgur.com/mXctcYY.jpg' />
+                        <img className='overlord' src='https://i.imgur.com/mXctcYY.jpg' alt='img' />
                     </div>
                 </div>
                 <div className='perktwo' data-aos="fade-up">
@@ -70,7 +70,7 @@ const Home = props => {
                 </div>
                 <div className='perkfour' data-aos='fade-up'>
                     <div className='perkfourcontent'>
-                    <img className='free' src='https://i.imgur.com/dk86e27.png' />
+                    <img className='free' src='https://i.imgur.com/dk86e27.png' alt='img'/>
                         <p className='p4p'>Completely free simply signup and start watching.</p>
                     </div>
                     <div className='spacer'></div>

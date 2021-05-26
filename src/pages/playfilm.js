@@ -14,9 +14,9 @@ const PlayFilm = props => {
     useEffect(fetchMovie, [])
 
     return(
-        <div>
+        <div className='movieplayscreen'>
             <div className='movieframe'>
-                <iframe 
+                <iframe className='moviepagescreen'
                     width="80%" 
                     height="700vh" 
                     src={movie.movie_src}
@@ -27,7 +27,7 @@ const PlayFilm = props => {
                 </iframe>
             <div className='movieinfo'>
                 <h2 className='moviepagetitle'>{movie.title}</h2>
-                <Review />
+                <Review id={movie.id}/>
             </div>
             </div>
         </div>

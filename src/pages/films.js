@@ -1,13 +1,11 @@
 import axios from 'axios'
-import { useState, useEffect, useContext} from 'react'
-import { UserContext } from '../context/usercontext'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-
+import RatingStars from '../components/rating'
 
 const Films = props => {
-    const { userState } = useContext(UserContext)
-    const [user, setUser] = userState
     const [movies, setMovies] = useState([])
+    const [tags, setTags] = useState([])
 
     const getAllMovies = () => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/movies`).then(res => {
@@ -16,21 +14,40 @@ const Films = props => {
         })
     }
 
-    useEffect(getAllMovies, [])
+    const getAllTags = () => {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/tag/all`).then(res => {
+            console.log(res);
+            setTags(res.data.Tags)
+        })
+    }
+
+    useEffect(() => {
+        getAllMovies()
+        getAllTags()
+    }, [])
 
     return(
         <div className='filmscontainer'>
             <div className='films'>
-                {movies.map((movie, i) => (
-                    <div className='movie' key={i}>
-                        <Link to={`/movie/${movie.id}`}>
-                            <img className='moviecover' src={movie.movie_cover} />
-                            <h2 className='movietitle'>{movie.title}</h2>
-                            <p className='moviedesc'>{movie.description}</p>
-                            <p className='movierating'>Rating: {movie.rating === 0 ? 'N/A': movie.rating}</p>
-                        </Link>
-                    </div>
-                ))}
+                {movies.map((movie, i) => {
+                    let movie_tag = ''
+                    tags.forEach(tag => {
+                        if(tag.movie_id === movie.id) {
+                            movie_tag = tag.genre
+                        }
+                    })
+                    return(
+                        <div className='movie' key={i}>
+                            <Link to={`/movie/${movie.id}`}>
+                                <img className='moviecover' src={movie.movie_cover} alt='movie Cover'/>
+                                <h2 className='movietitle'>{movie.title}</h2>
+                                <p className='tag'>{movie_tag}</p>
+                                <p className='moviedesc'>{movie.description}</p>
+                                <p className='movierating'><RatingStars movie_id={movie.id} /></p>
+                            </Link>
+                        </div>
+                    )
+                })}
             </div>
         </div>
     )

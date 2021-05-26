@@ -33,7 +33,7 @@ const Login = props => {
             email: email,
             password: password
         })
-        if(res.data.Login == 'Unauthorized') {
+        if(res.data.Login === 'Unauthorized') {
             setError(true)
             setEmail('')
             setPassword('')

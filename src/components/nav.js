@@ -8,7 +8,7 @@ import { UserContext } from '../context/usercontext'
 
 const Nav = props => {
     const history = useHistory();
-    const { userState, fetchUser } = useContext(UserContext)
+    const { userState } = useContext(UserContext)
     const [user, setUser] = userState
     const [anchorEle, setAnchorEle] = useState(null)
 
@@ -40,7 +40,7 @@ const Nav = props => {
                 open={Boolean(anchorEle)}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleClose}>Account</MenuItem>
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
             {localStorage.getItem('userId') ? 
@@ -55,7 +55,7 @@ const Nav = props => {
                             textDecoration: 'none'
                         }}
                         onClick={handleClick}>
-                        Profile
+                        {user.username}
                     </Button>
                     <Box m={1.5} />
                     <Button
