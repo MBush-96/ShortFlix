@@ -2,8 +2,11 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import RatingStars from '../components/rating'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const Films = props => {
+    AOS.init()
     const [movies, setMovies] = useState([])
     const [tags, setTags] = useState([])
 
@@ -37,7 +40,7 @@ const Films = props => {
                         }
                     })
                     return(
-                        <div className='movie' key={i}>
+                        <div className='movie' key={i} data-aos="fade-up">
                             <Link to={`/movie/${movie.id}`}>
                                 <img className='moviecover' src={movie.movie_cover} alt='movie Cover'/>
                                 <h2 className='movietitle'>{movie.title}</h2>
