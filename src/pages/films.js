@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom'
 import RatingStars from '../components/rating'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { TextField, withMobileDialog } from '@material-ui/core'
 
 const Films = props => {
     AOS.init()
     const [movies, setMovies] = useState([])
     const [tags, setTags] = useState([])
+    const [search, setSearch] = useState('')
 
     const getAllMovies = () => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/movies`).then(res => {
@@ -29,6 +31,10 @@ const Films = props => {
         getAllTags()
     }, [])
 
+    movies.map(movie => {
+        console.log(movie.title.includes('SCP'));
+    })
+
     return(
         <div className='filmscontainer'>
             <div className='films'>
@@ -46,8 +52,8 @@ const Films = props => {
                                 <h2 className='movietitle'>{movie.title}</h2>
                                 <div className='tagcontainer'>
                                 {movie_tag.map((tag, i) => (
-                                        <p className='tag' key={i}>{tag}</p>
-                                        ))}
+                                    <p className='tag' key={i}>{tag}</p>
+                                    ))}
                                 </div>
                                 <p className='moviedesc'>{movie.description}</p>
                                 <p className='movierating'><RatingStars movie_id={movie.id} /></p>

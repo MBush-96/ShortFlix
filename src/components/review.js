@@ -7,10 +7,11 @@ import axios from 'axios'
 const Review = props => {
     const { userState } = useContext(UserContext)
     const [user, setUser] = userState
-    const [value, setValue] = useState(null)
+    const [value, setValue] = useState(0)
     const [userHasRated, setUserHasRated] = useState(false)
     const [ratedValue, setRatedValue] = useState(0)
 
+    console.log(props.id);
     // Check if user has already rated a movie
     const getPreviousRating = () => {
         axios.post(`${process.env.REACT_APP_BACKEND_URL}/rating/${user.id}`).then(res => {
@@ -19,6 +20,7 @@ const Review = props => {
                 if(i['movie_id'] === props.id) {
                     setRatedValue(i['rating'])
                     setUserHasRated(true)
+                    console.log(i['movie_id'], 'rating');
                 }
             }
         })
@@ -32,7 +34,8 @@ const Review = props => {
                 movie_id: props.id,
                 rating: value
             })
-        } else if (!userHasRated) {
+        } 
+        if (userHasRated === false) {
             axios.post(`${process.env.REACT_APP_BACKEND_URL}/rating/movies/${props.id}`, {
                 movie_id: props.id,
                 rating: value,
@@ -41,8 +44,8 @@ const Review = props => {
         }
     }
 
+    useEffect(getPreviousRating, [props])
     useEffect(handleChange, [value])
-    useEffect(getPreviousRating, [user])
 
     return(
         <div className='rating'>
@@ -53,7 +56,6 @@ const Review = props => {
                     name='simple-controlled'
                     value={value}
                     onChange={(e, newValue) => {
-                        console.log(newValue);
                         setValue(newValue)
                     }}
                     style={{

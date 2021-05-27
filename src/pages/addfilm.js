@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import { TextField, Button, Box, FormControl, Select, InputLabel } from '@material-ui/core'
-
+import { UserContext } from '../context/usercontext'
 const AddFilm = props => {
     const history = useHistory()
+    const { userState } = useContext(UserContext)
+    const [user, setUser] = userState
     const [movieTitle, setMovieTitle] = useState('')
     const [movieDesc, setMovieDesc] = useState('')
     const [movieCover, setMovieCover] = useState('')
@@ -13,15 +15,19 @@ const AddFilm = props => {
 
     const handleSubmit = async e => {
         e.preventDefault()
-        if(movieSrc.length() === 11){
+        console.log(movieSrc);
+        if(movieSrc.length === 11){
             const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/movies/create`, {
                 title: movieTitle,
                 description: movieDesc,
                 movie_src: movieSrc,
                 movie_cover: movieCover,
                 rating: 0
-            })
+            }, { headers: {
+                'Authorization': user.id
+            }})
     
+            console.log(res.data);
             const resTag = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/tag`, {
                 genre: genre,
                 movie_id: res.data.Created_Movie.id
