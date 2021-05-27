@@ -5,12 +5,14 @@ import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import { useState, useContext } from 'react'
 import { UserContext } from '../context/usercontext'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 const Nav = props => {
     const history = useHistory();
     const { userState } = useContext(UserContext)
     const [user, setUser] = userState
     const [anchorEle, setAnchorEle] = useState(null)
+    const matches = useMediaQuery(`(max-width:600px)`)
 
     const handleClick = e => {
         setAnchorEle(e.currentTarget)
@@ -26,6 +28,8 @@ const Nav = props => {
         setAnchorEle(null)
         history.push('/')
     }
+
+    console.log(matches);
  
     return(
         <div className='homenav'>
@@ -49,8 +53,8 @@ const Nav = props => {
                         variant='contained'
                         color='secondary'
                         style={{
-                            maxWidth: '10%',
-                            maxHeight: '50%',
+                            width: matches ? '20%': '10%',
+                            height: '50%',
                             backgroundColor: 'red',
                             textDecoration: 'none'
                         }}
@@ -58,18 +62,18 @@ const Nav = props => {
                         {user.username}
                     </Button>
                     <Box m={1.5} />
-                    <Button
+                        <Button
                         variant='contained'
                         color='secondary'
                         style={{
-                            maxWidth: '12%',
+                            width: matches ? '52%': '12%',
                             maxHeight: '50%',
                             backgroundColor: 'red',
                             textDecoration: 'none'
-                    }}
-                    onClick={() => {
-                        history.push('/newfilm')
-                    }}>Add Film</Button>
+                        }}
+                        onClick={() => {
+                            history.push('/newfilm')
+                        }}>Add Film</Button>    
                 </div>
             :
                 <Link to='/login' className='t'>

@@ -43,6 +43,7 @@
   color: red;
   font-weight: 900;
   text-decoration: none;
+  width: 50%;
 }
 
 .title:hover {
@@ -57,7 +58,7 @@
 }
 
 .nav {
-  width: 100%;
+  width: 50%;
   display: flex;
   justify-content: flex-end;
 
@@ -389,5 +390,23 @@ a {
 
   [class*=homeheader] {
     background-image: none;
+  }
+
+  [class*=homenav] {
+    padding: 0 10px;
+  }
+
+  [class*=moviepagescreen] {
+    width: 450px;
+    height: 350px;
+  }
+
+  [class*=movieinfo] {
+    margin-top: 0;
+    width: 60%;
+  }
+
+  [class*=moviepagetitle] {
+    margin-left: 22px;
   }
 }

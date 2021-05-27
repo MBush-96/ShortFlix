@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../context/usercontext'
 import { TextField, Box, Button } from '@material-ui/core'
 import axios from 'axios'
@@ -16,14 +16,21 @@ const Profile = props => {
         if(confirmNPassword !== nPassword) {
             setError(true)
         } else if (confirmNPassword === nPassword) {
+            setError(false)
             const res = axios.put(`${process.env.REACT_APP_BACKEND_URL}/user/update/${user.id}`, {
                 cPassword: cPassword,
                 password: nPassword
             })
-
+            console.log(res);
         }
-
+        setCPassword('')
+        setNPassword('')
+        setConfirmNPassword('')
     }
+
+    useEffect(() => {
+        console.log('pass dosent match');
+    }, [error])
 
     return(
         <div className='profilecontainer'>
@@ -32,6 +39,7 @@ const Profile = props => {
                 <h2 className='pfwhite'>Change Password</h2>
                 <TextField
                     id='cp'
+                    type='password'
                     label='Current Password'
                     required
                     value={cPassword}
@@ -47,6 +55,7 @@ const Profile = props => {
 
                 <TextField
                     id='np'
+                    type='password'
                     label='New Password'
                     required
                     value={nPassword}
@@ -55,23 +64,53 @@ const Profile = props => {
                         background: 'white',
                         width: '50ch'
                     }}
-                    onChange={e => {setNPassword(e.target.value)}}
+                    onChange={e => {
+                        setNPassword(e.target.value)
+                    }}
                 />
 
                 <Box m={1.5} />
-
-                <TextField
-                    id='np'
-                    label='Confirm New Password'
-                    required
-                    value={confirmNPassword}
-                    variant='filled'
-                    style={{
-                        background: 'white',
-                        width: '50ch'
-                    }}
-                    onChange={e => {setConfirmNPassword(e.target.value)}}
-                />
+                {error ?
+                    <TextField
+                        id='np'
+                        error
+                        type='password'
+                        label='Confirm New Password'
+                        required
+                        value={confirmNPassword}
+                        variant='filled'
+                        style={{
+                            background: 'white',
+                            width: '50ch'
+                        }}
+                        onChange={e => {setConfirmNPassword(e.target.value)}}
+                    />
+                
+            
+                :
+                    <TextField
+                        id='np'
+                        type='password'
+                        label='Confirm New Password'
+                        required
+                        value={confirmNPassword}
+                        variant='filled'
+                        style={{
+                            background: 'white',
+                            width: '50ch'
+                        }}
+                        onChange={e => {
+                            setConfirmNPassword(e.target.value)
+                            if (nPassword === confirmNPassword) {
+                                setError(false)
+                                console.log('false');
+                            } else if (nPassword !== confirmNPassword) {
+                                setError(true)
+                                console.log('true');
+                            }
+                        }}
+                    />
+                }
 
                 <Box m={1.5} />
 

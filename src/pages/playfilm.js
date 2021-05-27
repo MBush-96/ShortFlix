@@ -19,7 +19,7 @@ const PlayFilm = props => {
                 <iframe className='moviepagescreen'
                     width="80%" 
                     height="700vh" 
-                    src={movie.movie_src}
+                    src={`https://youtube.com/embed/${movie.movie_src}`}
                     title="YouTube video player" 
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

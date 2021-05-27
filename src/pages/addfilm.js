@@ -13,22 +13,24 @@ const AddFilm = props => {
 
     const handleSubmit = async e => {
         e.preventDefault()
-        const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/movies/create`, {
-            title: movieTitle,
-            description: movieDesc,
-            movie_src: movieSrc,
-            movie_cover: movieCover,
-            rating: 0
-        })
+        if(movieSrc.length() === 11){
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/movies/create`, {
+                title: movieTitle,
+                description: movieDesc,
+                movie_src: movieSrc,
+                movie_cover: movieCover,
+                rating: 0
+            })
+    
+            const resTag = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/tag`, {
+                genre: genre,
+                movie_id: res.data.Created_Movie.id
+            })
+            console.log(resTag);
+            console.log(res);
+        }
 
-        const resTag = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/tag`, {
-            genre: genre,
-            movie_id: res.data.Created_Movie.id
-        })
 
-        console.log(resTag);
-
-        console.log(res);
         history.push('/films')
         setMovieTitle('')
         setMovieDesc('')
@@ -83,6 +85,7 @@ const AddFilm = props => {
                     }}
                     onChange={e => setMovieSrc(e.target.value)}
                 />
+                <img src='https://i.imgur.com/OsLU2J0.png' margin-top='10px' width='85%' alt='img' />
 
                 <Box m={1.5} />
                 
@@ -113,6 +116,7 @@ const AddFilm = props => {
                         }}
                         style={{
                             background: 'white',
+                            width: '30ch'
                         }}
                         required
                     >
